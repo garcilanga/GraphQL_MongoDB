@@ -84,7 +84,7 @@ http://localhost:8080//<coleccion>/<parámetros opcionales separados por cartact
 
 <_colección_> son los endpoint o puntos de entrada y corresponden a los nombres de las colecciones de datos disponibles.
 
-<_parámetros_> son los parámetos que configuran la consulta. Van se parados por caracteres '&' y pueden colocarse en cualquier orden. Los parámetros se escriben con la misma sintaxis que con las instrucciones find(), sort(), count()... en el cliente por consola de MongoDB . Los parámetros posibles son:
+<_parámetros_> son los parámetos que configuran la consulta. Van se parados por caracteres '&' y pueden colocarse en cualquier orden. Los parámetros se escriben con la misma sintaxis que la utilizada con las instrucciones find(), sort(), count()... en el cliente por consola de MongoDB . Los parámetros posibles son:
 - **limit**: número total de registros a recuperar. Ej.: limit=10
 - **skip**: número de registros a descartar (saltar) desde el inicio. Ej.: skip=1000
 - **f**: (fields) datos a mostrar (equivale al SELECT en consultas SQL). Ej.: f={'NOMBRE':1,'DIRECCION':1}
