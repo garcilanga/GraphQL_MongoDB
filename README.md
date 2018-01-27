@@ -93,27 +93,27 @@ http:\\localhost:8080\\<coleccion>\<parámetros opcionales separados por cartact
 
 Ejemplos de consultas de datos, suponiendo una base de datos de hoteles con una colección de hoteles:
 
-- Múmero total de hoteles
+- Múmero total de hoteles:
 ```html
 http://localhost:8080/hoteles/count
 ```
 
-- Múmero total de hoteles en Madrid
+- Múmero total de hoteles en Madrid:
 ```
-http://localhost:8080/hoteles/count&f={'CIUDAD':'Madrid'}
+http://localhost:8080/hoteles/count&q={'CIUDAD':'Madrid'}
 ```
 
-- Los 5 primeros hoteles con 2 o más estrellas
+- Los 5 primeros hoteles con 2 ó más estrellas:
 ```
 http://localhost:8080/carga/q={'ESTRELLAS':{'$gte':2}}&limit=5
 ```
 
-- Los 5 siguientes
+- Los 5 siguientes:
 ```
 http://localhost:8080/carga/q={'ESTRELLAS':{'$gte':2}}&limit=5&skip=5
 ```
 
-- Ordenando por precio de menos a mayor
+- Ordenando por precio de menos a mayor:
 ```
 http://localhost:8080/carga/q={'ESTRELLAS':{'$gte':2}}&limit=5&skip=5&s=[('PRECIO',1)]
 ```
