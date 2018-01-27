@@ -106,24 +106,24 @@ http://localhost:8080/hoteles/count&q={'CIUDAD':'Madrid'}
 
 - Los 5 primeros hoteles con 2 ó más estrellas:
 ```
-http://localhost:8080/carga/q={'ESTRELLAS':{'$gte':2}}&limit=5
+http://localhost:8080/hoteles/q={'ESTRELLAS':{'$gte':2}}&limit=5
 ```
 
 - Los 5 siguientes:
 ```
-http://localhost:8080/carga/q={'ESTRELLAS':{'$gte':2}}&limit=5&skip=5
+http://localhost:8080/hoteles/q={'ESTRELLAS':{'$gte':2}}&limit=5&skip=5
 ```
 
 - Ordenando por precio de menos a mayor:
 ```
-http://localhost:8080/carga/q={'ESTRELLAS':{'$gte':2}}&limit=5&skip=5&s=[('PRECIO',1)]
+http://localhost:8080/hoteles/q={'ESTRELLAS':{'$gte':2}}&limit=5&skip=5&s=[('PRECIO',1)]
 ```
 
 - Mostrando únicamente nombre, dirección y precio:
 ```
-http://localhost:8080/carga/q={'ESTRELLAS':{'$gte':2}}&limit=5&skip=5&s=[('PRECIO',1)]&f={'NOMBRE':1,'DIRECCION':1,'PRECIO':1}
+http://localhost:8080/hoteles/q={'ESTRELLAS':{'$gte':2}}&limit=5&skip=5&s=[('PRECIO',1)]&f={'NOMBRE':1,'DIRECCION':1,'PRECIO':1}
 
 ```
-Ejemplo de una consulta a una basede datos sobre provincias de España:
+Ejemplo de una consulta a una base de datos sobre provincias de España:
 
 ![provincias](images/query_provincias.png)
