@@ -41,7 +41,7 @@ def getVerbose():
 ####################################################################################################
 def get_mongodb_mgr(reconnect=False):
 
-    # Obtiene la información de configuración de conexión (indicadas por línea de comandos)
+    # Obtiene la información de configuración de conexión (indicada por línea de comandos)
     config = getConfig()
 
     # Abre conexión con el servidor de MongoDB
@@ -50,7 +50,7 @@ def get_mongodb_mgr(reconnect=False):
     # Selecciona la base de datos
     db = client[config['mongo_dbname']]
 
-    # Se autentica con las credenciales de usuario y contraseña
+    # Aplica las credenciales de usuario y contraseña
     if config['mongo_user']:
         db.authenticate(config['mongo_user'], config['mongo_password'])
 
@@ -99,7 +99,7 @@ def nan2none(myobj):
 ### Retorna:
 ### - Objeto diccionario con los pares clave-valor de los parámetros
 ####################################################################################################
-### Por ejemplo, la Url con los parámetros:
+### Por ejemplo, una Url con los parámetros:
 ###     q={'precio':{'$gt':3.5}}&limit=50&f={'articulo':1,'cantidad':1,'precio':1}
 ### generaría el siguiente resultado:
 ###     url_params = {
@@ -163,7 +163,7 @@ def get_url_params(strparam):
 ###     }
 ####################################################################################################
 def get_mongodb_query_params(url_params):
-    # Inicia el diccionario de pares claves-valor
+    # Inicia el diccionario de parámetos de consulta para MongoDB
     qyery_params = {
         'skip': 0,
         'limit': 0,
@@ -173,40 +173,47 @@ def get_mongodb_query_params(url_params):
         'count': True
     }
     
-    ### Ccontar registros (Ej.: &count)
-    ### En este caso solo se tendrá en cuenta el parámetros 'q' 
+    # Contar registros (Ej.: &count)
+    # En este caso solo se tendrá en cuenta el parámetros 'q' 
     if 'count' not in url_params:
         del qyery_params['count']
     
-    ### Número de documento inicial (Ej.: &skip=120)
+    # Número de documento inicial (Ej.: &skip=120)
     if 'skip' in url_params:
         qyery_params['skip'] = int(url_params.get('skip'))
 
-    ### Número total de documentos (Ej.: &limit=10)
+    # Número total de documentos (Ej.: &limit=10)
     if 'limit' in url_params:
         qyery_params['limit'] = int(url_params.get('limit'))
     
-    ### Datos a filtrar (Ej.: &q={'precio':{'$gt':3.5}})
+    # Datos para filtrar (Ej.: &q={'precio':{'$gt':3.5}})
     if 'q' in url_params:
         qyery_params['where'] = ast.literal_eval(url_params.get('q'))
 
-    ### Datos a mostrar (Ej.: &f={'articulo':1,'cantidad':1,'precio':1})
+    # Datos a mostrar (Ej.: &f={'articulo':1,'cantidad':1,'precio':1})
     if 'f' in url_params:
         qyery_params['fields'] = ast.literal_eval(url_params.get('f'))
     qyery_params['fields']['_id'] = 0
 
-    ### Datos a ordenar (Ej.: &s=[('precio',-1)])
+    # Datos para ordenar (Ej.: &s=[('precio',-1)])
     if 's' in url_params:
         qyery_params['sort'] = ast.literal_eval(url_params.get('s'))
 
-    ### En modo verbose muestra los parámetos por consola
+    # En modo verbose muestra los parámetros por consola
     if getVerbose():
         print('- get_mongodb_query_params: %s' % pretty_json(qyery_params))
 
+    # Retorna el diccionario de parámetos de consulta para MongoDB
     return qyery_params
 
 ####################################################################################################
-### Obtiene de la base de datos la información solicitada por url
+### Obtiene de la base de datos la información solicitada por la url
+####################################################################################################
+### Parámetros:
+### - Nombre de colección
+### - Cadena de parámetros pasados por url
+### Retorna:
+### - Resultado de la consulta a base de datos y alguna información adicioanl
 ####################################################################################################
 def get_data_from_mongodb_query(collection_name, strparam):
     # Obtiene los parámetros de la url
@@ -226,17 +233,20 @@ def get_data_from_mongodb_query(collection_name, strparam):
             numero = mgr.find(qyery_params['where'], {}).count()
         # En caso contrario
         else:
+            # Si la consulta contiene el parámetro 'sort'
             if len(qyery_params['sort']) == 0:
                 cursor = mgr.find (qyery_params['where'], qyery_params['fields']).skip(qyery_params['skip' ]).limit(qyery_params['limit'])
+            # En caso contrario
             else:
                 cursor = mgr.find (qyery_params['where'], qyery_params['fields']).sort(qyery_params['sort']).skip(qyery_params['skip' ]).limit(qyery_params['limit'])
+            # Formatea el resultado
             lista = list(map(lambda doc: nan2none(doc), cursor))
             numero = len(lista)
 
     # Finaliza el contador de tiempo de ejecución de la consulta
     end_time = time.time()
 
-    # Formatea y retorna la respuesta
+    # Formatea la respuesta
     url_params['collection'] = collection_name
     response = {
         'params': url_params,
@@ -244,16 +254,20 @@ def get_data_from_mongodb_query(collection_name, strparam):
         'time': end_time - init_time,
         'count': numero
     }
+    
+    # En modo verbose muestra información adicional por consola
     if getVerbose():
         print('- Response:\n%s' % pretty_json(response))
 
+    # Completa la respuesta
     if 'count' not in qyery_params:
         response['list'] = lista
 
+    # Retorna la la respuesta
     return response
 
 ####################################################################################################
-### Url de bienvenida
+### Endpoint de bienvenida
 ####################################################################################################
 @route('/')
 def hello():
@@ -270,7 +284,7 @@ def hello():
     return lsthtml
 
 ####################################################################################################
-### Url del servicio
+### Endpoint general de consulta
 ####################################################################################################
 @route('/<collection>')
 @route('/<collection>/')
