@@ -124,4 +124,6 @@ http://localhost:8080/carga/q={'ESTRELLAS':{'$gte':2}}&limit=5&skip=5&s=[('PRECI
 http://localhost:8080/carga/q={'ESTRELLAS':{'$gte':2}}&limit=5&skip=5&s=[('PRECIO',1)]&f={'NOMBRE':1,'DIRECCION':1,'PRECIO':1}
 
 ```
+Ejemplo de una consulta a una basede datos sobre provincias de España:
 
+![provincias](images/query_provincias.png)
