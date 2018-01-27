@@ -18,8 +18,6 @@ La ejecución del microservicio se realiza por línea de comandos, invocando el 
 ```
 python server.py -mdb mi_base_de_datos
 ```
-![Inicio](images/server.png)
-
 La lista completa de parámetros de configuración puede obtenerse con el parámetro -h:
 ```sh
 python server.py -h
@@ -69,13 +67,13 @@ Si tenemos una base de datos con varias colecciones pero solo queremos servir da
     python server.py -mdb mi_base_de_datos -mcol clientes,articulos,facturas
 ```
 
-
 ## Probar el servicio
 
 Una vez arrancado el servidor, podemos consumir el servicio de distintas formas, por ejemplo con wget o curl por línea de comandos, desde una aplicación que estemos desarrollando o desde un navegador web:
 ```
 http://localhost:8080
 ```
+![Inicio](images/server.png)
 
 El acceso a la información se realiza mediante url's con el siguiente formato:
 ```
