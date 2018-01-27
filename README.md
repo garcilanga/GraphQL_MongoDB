@@ -74,12 +74,12 @@ Si tenemos una base de datos con varias colecciones pero solo queremos servir da
 
 Una vez arrancado el servidor, podemos consumir el servicio de distintas formas, por ejemplo con wget o curl por línea de comandos, desde una aplicación que estemos desarrollando o desde un navegador web:
 ```
-http:\\localhost:8080
+http://localhost:8080
 ```
 
 El acceso a la información se realiza mediante url's con el siguiente formato:
 ```
-http:\\localhost:8080\\<coleccion>\<parámetros opcionales separados por cartacteres &>
+http://localhost:8080//<coleccion>/<parámetros opcionales separados por cartacteres &>
 ```
 
 <_colección_> son los endpoint o puntos de entrada y corresponden a los nombres de las colecciones de datos disponibles.
