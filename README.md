@@ -18,6 +18,7 @@ La ejecución del microservicio se realiza por línea de comandos, invocando el 
 ```
 python server.py -mdb mi_base_de_datos
 ```
+![Inicio](images/server.png)
 
 La lista completa de parámetros de configuración puede obtenerse con el parámetro -h:
 ```sh
