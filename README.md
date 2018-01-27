@@ -1,4 +1,4 @@
-# Microservicio para servir datos MongoDB
+# Microservicio para datos MongoDB
 
 Si estás diseñando una base de datos MongoDB, aprovisionando datos, desarrollando un servicio para esos datos, una aplicación que los consuma, etc., este sencillo servicio al estilo GraphQL puede serte muy útil.
 
