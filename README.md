@@ -126,5 +126,3 @@ Ejemplo de una consulta a una base de datos sobre provincias de España:
 
 ![provincias](images/query_provincias.png)
 
----
-Juan García (2018)
