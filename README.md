@@ -125,3 +125,6 @@ http://localhost:8080/hoteles/q={'ESTRELLAS':{'$gte':2}}&limit=5&skip=5&s=[('PRE
 Ejemplo de una consulta a una base de datos sobre provincias de España:
 
 ![provincias](images/query_provincias.png)
+
+---
+Juan García (2018)
