@@ -2,7 +2,7 @@
 
 Si estás diseñando una base de datos MongoDB, aprovisionando datos, desarrollando un servicio para esos datos, una aplicación que los consuma, etc., este sencillo servicio al estilo GraphQL puede serte muy útil.
 
-Para su construcción he utilizado Python como lenguaje de desarrollo y la librería Bottle para el servicio REST. En lugar de un servicio REST al uso he realizado una implementación particular de la especificación GraphQL. Más información en https://github.com/garcilanga/Gestion_Datos_Fuentes_Externas/blob/master/RESTfull_vs_GraphQL.md
+Para su desarrollo he utilizado Python como lenguaje de programación y la librería Bottle para implementar el servicio REST. En lugar de un servicio REST al uso he realizado una implementación particular de la especificación GraphQL. Más información en https://github.com/garcilanga/Gestion_Datos_Fuentes_Externas/blob/master/RESTfull_vs_GraphQL.md
 
 **MongoDB** es una base de datos NoSQL orientada a documentos, libre y de código abierto, y una de las más populares debido a lo simple de su configuración e inserción de datos y a su estructura flexible, que facilita los cambios en el modelo de datos. Más información en https://github.com/garcilanga/MongoDB-Instalacion
 
