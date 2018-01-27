@@ -71,7 +71,7 @@ Si tenemos una base de datos con varias colecciones pero solo queremos servir da
 
 ## Probar el servicio
 
-Una vez arrancado el servidor, podemos consumir el servicio de distintas formas, por ejemplo con wget o curl por línea de comandos, o desde un navegador web:
+Una vez arrancado el servidor, podemos consumir el servicio de distintas formas, por ejemplo con wget o curl por línea de comandos, desde una aplicación que estemos desarrollando o desde un navegador web:
 ```
 http:\\localhost:8080
 ```
