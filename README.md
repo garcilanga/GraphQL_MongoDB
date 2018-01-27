@@ -90,7 +90,7 @@ http://localhost:8080//<coleccion>/<parámetros opcionales separados por cartact
 - **f**: (fields) datos a mostrar (equivale al SELECT en consultas SQL). Ej.: f={'NOMBRE':1,'DIRECCION':1}
 - **q**: (query) filtro de datos (equivale al WHERE en consultas SQL). Ej.: q={'PROVINCIA':'Madrid','PRECIO':{'$lt':100}}
 - **s**: (sort) ordenación de los datos (equivale al ORDER BY en consultas SQL). Ej.: s=[('PRECIO',1),('ESTRELLAS',-1)]
-- **count**: número total de registros que cumplen la condición establecida con el parámetro **q**. Si este parámetro está presenete sólo se tiene en cuenta el parámetro **q**, los demas son descartados.
+- **count**: número total de registros que cumplen la condición establecida con el parámetro **q**. Si este parámetro está presente sólo se tiene en cuenta el parámetro **q**, los demas son descartados.
 
 Ejemplos de consultas de datos, suponiendo una base de datos de hoteles con una colección de hoteles:
 
