@@ -2,23 +2,17 @@
 # -*- coding: utf-8 -*-
 #encoding:utf-8
 
-import sys
-import unicodedata
-import datetime
 import time
 import argparse
 import ast
-import re
 from json import dumps
 import numpy as np
 import pymongo
 from bottle import route, run
 
 ####################################################################################################
-### Configuración
-####################################################################################################
-
 ### Parámetros de configuración por línea de comandos
+####################################################################################################
 _config = { # ¡¡¡ No usar la variable _config, sino la función getConfig() !!!
     'mongo_host': None,
     'mongo_port': None,
@@ -281,7 +275,7 @@ def hello():
         '<li>Colecciones: <b>' + ', '.join(getConfig()['mongo_collections']) + '</b>',
         '</ul>',
     ]
-    return lsthtml
+    return '\n'.join(lsthtml)
 
 ####################################################################################################
 ### Endpoint general de consulta
